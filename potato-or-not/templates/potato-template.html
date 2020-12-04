@@ -1,0 +1,42 @@
+<form id="potato-form" class="dialog-content potato" onsubmit="event.preventDefault();">
+
+	<style>
+
+		.potato .potato-image-container{
+			height:411px;
+		}
+
+		.potato img{
+			border:0;
+		}
+
+		.potato h1{
+			text-align:center;
+		}
+
+		.potato span{
+			font-size: 1rem;
+		}
+
+		#potato_level {
+			margin-bottom: 1rem;
+		}
+
+	</style>
+	<div class='potato-image-container'>
+		<img id="potato-image" src='{{ image }}'>
+	</div>
+	<h1 id="potato-title">{{ name }}</h1>
+	<span id="potato-description">{{ description }}</span>
+	<hr>
+	<span>Select your computer's quality level:</span>
+	<input id="potato_level" type="range" min="0" value="{{ active_potato }}" max="2">
+
+    <div class="dialog-buttons">
+        <button class="dialog-button" data-button="confirm">
+			<i class='fas fa-carrot'></i>
+			Accept
+        </button>
+    </div>
+
+</form>

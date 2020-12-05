@@ -1,8 +1,10 @@
-Hooks.on("setup", () => {
+Hooks.on("ready", () => {
 
 	window.PotatoOrNot = new PotatoOrNotHandler();
 
 	Hooks.call("PotatoOrNotReady");
+
+	window.PotatoOrNot.postSetup();
 
 });
 
@@ -33,6 +35,13 @@ class PotatoOrNotHandler{
 			type: Number
 		});
 	
+		game.settings.register("potato-or-not", "numberOfSettings", {
+			scope: "client",
+			config: false,
+			default: 5,
+			type: Number
+		});
+	
 		game.settings.registerMenu("potato-or-not", "potato-or-not", {
 			name: "Set Up Potato Settings",
 			label: "Show Dialog",
@@ -54,37 +63,32 @@ class PotatoOrNotHandler{
 				"core": {
 					"maxFPS": 20,
 					"softShadows": false,
+					"mipmap": false,
 					"visionAnimation": false,
 					"lightAnimation": false,
-					"mipmap": false
 				},
 			},
 			{
 				"core": {
 					"maxFPS": 30,
 					"softShadows": true,
+					"mipmap": false,
 					"visionAnimation": true,
 					"lightAnimation": true,
-					"mipmap": false
 				}
 			},
 			{
 				"core": {
 					"maxFPS": 60,
 					"softShadows": true,
+					"mipmap": true,
 					"visionAnimation": true,
 					"lightAnimation": true,
-					"mipmap": true
 				}
 			}
 		];
 
 		this._quality = game.settings.get("potato-or-not", "potatoLevel");
-
-		if(!game.settings.get('potato-or-not', 'hasBeenPrompted') && game.settings.get('potato-or-not', 'promptUsers')){
-			game.settings.set("potato-or-not", "hasBeenPrompted", true);
-			this._showDialog();
-		}
 		
 	}
 
@@ -114,6 +118,50 @@ class PotatoOrNotHandler{
 		if(this.settings[quality_level][module][setting] === undefined) throw `Setting "${setting}" in module "${module}" not found`;
 	}
 
+	get numberOfSettings(){
+		let numberOfSettings = [];
+		for(let i = 0; i < this.settings.length; i++){
+			numberOfSettings[i] = 0;
+			for(let settings of Object.values(this.settings[i])){
+				numberOfSettings[i] += Object.keys(settings).length;
+			}
+		}
+		return numberOfSettings;
+	}
+
+	postSetup(){
+		let numberOfSettings = this.numberOfSettings[this.quality];
+
+		if(!game.settings.get('potato-or-not', 'hasBeenPrompted') && game.settings.get('potato-or-not', 'promptUsers')){
+			this.showDialog();
+		}else if(numberOfSettings != game.settings.get("potato-or-not", "numberOfSettings")){
+			game.settings.set("potato-or-not", "numberOfSettings", numberOfSettings);
+			this.updateSettings();
+		}
+	}
+
+	updateSettings(){
+
+		let modules = Object.keys(this.current_settings);
+
+		for(let module of modules){
+			for(let [setting, value] of Object.entries(this.current_settings[module])){
+				try{
+					game.settings.set(module, setting, value);
+					console.log(`Potato Or Not | Set ${module}.${setting} to ${value}`);
+				}catch(err){
+					console.error(`Potato Or Not | Could not set ${module}.${setting} to ${value}`);
+				}
+			}
+		}
+
+	}
+
+	/**
+	  * Locally prompts the settings dialog
+	  * 
+	  * @return {FormApplication}		The potato FormApplication
+	  */
 	showDialog(){
 		return new PotatoOrNotApplication().render(true);
 	}
@@ -135,21 +183,19 @@ class PotatoOrNotHandler{
 		this._quality = level;
 		game.settings.set("potato-or-not", "potatoLevel", level);
 
-		let modules = Object.keys(this.current_settings);
-
-		for(let module of modules){
-			for(let [setting, value] of Object.entries(this.current_settings[module])){
-				try{
-					game.settings.set(module, setting, value);
-				}catch(err){
-					console.error(`Potato Or Not | Could not set ${module}.${setting} to ${value}`);
-				}
-			}
-		}
+		this.updateSettings();
 
 		return true;
 	}
 
+	/**
+	  * Gets the value of a setting of a module at a quality level
+	  * @param {number} quality_level	The quality level which to get the setting from
+	  * @param {string} module			The module the setting belongs to
+	  * @param {string} setting			The setting to get the value from
+	  * 
+	  * @return {any} 					The value of the setting
+	  */
 	getSetting(quality_level=1, module="", setting="", value=""){
 
 		this._validate_setting(quality_level, module, setting);
@@ -161,7 +207,7 @@ class PotatoOrNotHandler{
 	/**
 	  * Adds a setting to be applied on a quality level
 	  * @param {number} quality_level	The quality level which to apply the setting to
-	  * @param {string} module_name			The module the setting belongs to
+	  * @param {string} module			The module the setting belongs to
 	  * @param {string} setting			The setting to modify 
 	  * @param {any} 	value			The value to set
 	  * @param {bool}	force			Whether to force-apply the setting right away should the client have the same quality level
@@ -280,6 +326,7 @@ class PotatoOrNotApplication extends FormApplication {
 
 	async _updateObject(event, formData) {
 		PotatoOrNot.quality = this.potato_quality;
+		game.settings.set("potato-or-not", "hasBeenPrompted", true);
 	}
 
 	_onPotatoLevelChange(event){

@@ -80,6 +80,5 @@ Removes a setting from a quality level
 | module | <code>string</code> |
 | setting | <code>string</code> |
 | value | <code>\*</code> |
-| force | <code>bool</code> |
 
 Returns <code>bool</code> on success

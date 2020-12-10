@@ -79,6 +79,5 @@ Removes a setting from a quality level
 | quality_level | <code>number</code> |
 | module | <code>string</code> |
 | setting | <code>string</code> |
-| value | <code>\*</code> |
 
 Returns <code>bool</code> on success

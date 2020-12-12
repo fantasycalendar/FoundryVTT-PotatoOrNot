@@ -155,6 +155,8 @@ class PotatoOrNotHandler{
 			}
 		}
 
+		window.location.reload();
+
 	}
 
 	/**
@@ -184,8 +186,6 @@ class PotatoOrNotHandler{
 		game.settings.set("potato-or-not", "potatoLevel", level);
 
 		this.updateSettings();
-
-		return true;
 	}
 
 	/**

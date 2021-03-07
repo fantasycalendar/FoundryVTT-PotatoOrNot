@@ -2,6 +2,8 @@ Hooks.on("ready", () => {
 
 	window.PotatoOrNot = new PotatoOrNotHandler();
 
+	console.log("Potato Or Not | Ready")
+
 	Hooks.call("PotatoOrNotReady");
 
 	window.PotatoOrNot.postSetup();
@@ -269,23 +271,6 @@ class PotatoOrNotApplication extends FormApplication {
 		super(dialogData, options);
 		game.settings.sheet.close();
 		this.potato_quality = PotatoOrNot.quality;
-		this.data = [
-			{
-				"name": "Shitty Potato",
-				"description": "If you have a laptop or a low end computer, use this setting for the best experience!",
-				"image": "/modules/potato-or-not/img/bad_potato.jpg",
-			},
-			{
-				"name": "Potato",
-				"description": "You have a mid-range computer that isn't bad, but it's getting on its years.",
-				"image": "/modules/potato-or-not/img/potato.png",
-			},
-			{
-				"name": "Premium Potato",
-				"description": "Your computer is squarely in the PCMR club.",
-				"image": "/modules/potato-or-not/img/good_potato.jpg",
-			}
-		];
 	}
 
 	/* -------------------------------------------- */
@@ -295,14 +280,10 @@ class PotatoOrNotApplication extends FormApplication {
 		return mergeObject(super.defaultOptions, {
 			title: "Potato Or Not",
 			template: `modules/potato-or-not/templates/potato-template.html`,
-			classes: ["dnd5e", "dialog"],
-			width: 600,
-			height: 650,
+			classes: ["dialog"],
+			width: 900,
+			height: 425,
 		});
-	}
-
-	get current_data(){
-		return this.data[this.potato_quality];
 	}
 
 	/* -------------------------------------------- */
@@ -310,31 +291,35 @@ class PotatoOrNotApplication extends FormApplication {
 	/** @override */
 	getData() {
 		let data = super.getData();
-		data = Object.assign(data, this.current_data);
-		data['active_potato'] = this.potato_quality;
+		data.potato_quality = this.potato_quality;
 		return data;
 	}
+
+	/* -------------------------------------------- */
 
 	/** @override */
 	activateListeners(html) {
 		super.activateListeners(html);
-
-		let input = html.find("#potato_level")[0];
-		input.addEventListener('input', this._onPotatoLevelChange.bind(this));
+		let btn = html.find(".potato-level-container");
+		btn.click(this._selectedPotatoLevel.bind(this));
 	}
 
+	/* -------------------------------------------- */
+
+	_selectedPotatoLevel(event) {
+		event.preventDefault();
+		const btn = $(event.currentTarget);
+		const level = btn.attr("level")|0;
+		this.potato_quality = level;
+		btn.attr('active', true);
+		this._element.find(".potato-level-container").not(btn).removeAttr("active");
+	}
+
+	/* -------------------------------------------- */
 
 	async _updateObject(event, formData) {
 		PotatoOrNot.quality = this.potato_quality;
 		game.settings.set("potato-or-not", "hasBeenPrompted", true);
-	}
-
-	_onPotatoLevelChange(event){
-		this.potato_quality = Number($(event.target).val());
-		let data = this.current_data;
-		this._element.find('#potato-title').text(data['name']);
-		this._element.find('#potato-description').text(data['description']);
-		this._element.find('#potato-image').attr('src', data['image']);
 	}
 
 }

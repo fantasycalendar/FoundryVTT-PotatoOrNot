@@ -2,15 +2,48 @@
 
 	<style>
 
-		.potato .potato-image-container{
-			height:411px;
+		.potato-master-container{
+			display:flex;
+			flex-direction: column;
+			flex-flow: row wrap;
+			justify-content: space-around;
+			padding-bottom:0.5rem;
 		}
 
-		.potato img{
-			border:0;
+		.potato-level-container{
+			flex:0 1 30%;
+			display:inline-flex;
+			flex-direction: column;
+			opacity:0.3;
+			transition: opacity 0.3s;
+			-webkit-transition: opacity 0.3s;
+			cursor: pointer;
+		}
+
+		.potato-level-container[active]{
+			opacity: 1;
+		}
+
+		.potato-level-container:hover{
+			opacity: 1;
+		}
+
+		.potato-level-row{
+			flex:1;
+			align-self: flex-start;
+		}
+
+		.potato-level-row-text{
+			flex:0 1 auto;
+			align-self: flex-end;
 		}
 
 		.potato h1{
+			text-align:center;
+			padding-bottom:0.5rem;
+		}
+
+		.potato h2{
 			text-align:center;
 		}
 
@@ -23,26 +56,49 @@
 			height: 1rem;
 			top: 3px;
 			position: relative;
-		}
-
-		.potato #potato_level {
-			margin-bottom: 1rem;
+			border:0;
 		}
 
 	</style>
-	<div class='potato-image-container'>
-		<img id="potato-image" src='{{ image }}'>
+	
+	<h1 id="potato-title">{{ localize "PotatoOrNot.Selection"}}</h1>
+
+	<div class='potato-master-container'>
+		<div class='potato-level-container' level='0' {{#if (eq potato_quality 0)}} active {{/if}} >
+			<div class="potato-level-row">
+				<img src='/modules/potato-or-not/img/bad_potato.jpg'>
+			</div>
+			<div class="potato-level-row-text">
+				<h2>{{ localize "PotatoOrNot.BadTitle" }}</h2>
+				<p>{{ localize "PotatoOrNot.BadDescription" }}</p>
+			</div>
+		</div>
+		<div class='potato-level-container' level='1' {{#if (eq potato_quality 1)}} active {{/if}} >
+			<div class="potato-level-row">
+				<img src='/modules/potato-or-not/img/potato.png'>
+			</div>
+			<div class="potato-level-row-text">
+				<h2>{{ localize "PotatoOrNot.MediumTitle" }}</h2>
+				<p>{{ localize "PotatoOrNot.MediumDescription" }}</p>
+			</div>
+		</div>
+		<div class='potato-level-container' level='2' {{#if (eq potato_quality 2)}} active {{/if}} >
+			<div class="potato-level-row">
+				<img src='/modules/potato-or-not/img/good_potato.jpg'>
+			</div>
+			<div class="potato-level-row-text">
+				<h2>{{ localize "PotatoOrNot.GoodTitle" }}</h2>
+				<p>{{ localize "PotatoOrNot.GoodDescription" }}</p>
+			</div>
+		</div>
 	</div>
-	<h1 id="potato-title">{{ name }}</h1>
-	<span id="potato-description">{{ description }}</span>
+	
 	<hr>
-	<span>Select your computer's quality level:</span>
-	<input id="potato_level" type="range" min="0" value="{{ active_potato }}" max="2">
 
     <div class="dialog-buttons">
         <button class="dialog-button" data-button="confirm">
 			<img class="potato_icon" src='/modules/potato-or-not/img/potato_icon.png'></img>
-			Accept
+			{{ localize "PotatoOrNot.Accept" }}
         </button>
     </div>
 

@@ -1,0 +1,10 @@
+{
+	"PotatoOrNot.BadTitle": "Batata Ruim",
+	"PotatoOrNot.BadDescription": "Se você tem um laptop ou um computador de nível baixo, use esta configuração para uma melhor experiência!",
+	"PotatoOrNot.MediumTitle": "Batata",
+	"PotatoOrNot.MediumDescription": "Você tem um computador de nível médio que não é ruim, mas está chegando na idade.",
+	"PotatoOrNot.GoodTitle": "Batata Premium",
+	"PotatoOrNot.GoodDescription": "Você é fã de carteirinha do Clube do Hardware.",
+	"PotatoOrNot.Selection": "Seleciona o nível de qualidade do seu computador:",
+	"PotatoOrNot.Accept": "Ok"
+}

@@ -1,0 +1,10 @@
+{
+	"PotatoOrNot.BadTitle": "Patata mierdosa",
+	"PotatoOrNot.BadDescription": "¡Si tienes un portatil o un ordenador de gama baja, utiliza estos ajustes para la mejor experiencia!",
+	"PotatoOrNot.MediumTitle": "Patata",
+	"PotatoOrNot.MediumDescription": "Si tienes un pc de gama media que no es malo, pero tiene unos añitos.",
+	"PotatoOrNot.GoodTitle": "Patata premium",
+	"PotatoOrNot.GoodDescription": "Tu ordenador es un miembro de pleno derecho de la PCMR.",
+	"PotatoOrNot.Selection": "Elige el nivel apropiado de tu PC:",
+	"PotatoOrNot.Accept": "Vale"
+}

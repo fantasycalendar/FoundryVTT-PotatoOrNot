@@ -2,7 +2,7 @@
   "name": "potato-or-not",
   "title": "Potato Or Not",
   "description": "Is your computer a potoato or not? If so, this mod will prompt you that you might want to turn down your graphics.",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": "Wasp (Wasp#2005)",
   "esmodules": [
     "main.js"

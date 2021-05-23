@@ -2,7 +2,7 @@
   "name": "potato-or-not",
   "title": "Potato Or Not",
   "description": "Is your computer a potoato or not? If so, this mod will prompt you that you might want to turn down your graphics.",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "author": "Wasp (Wasp#2005)",
   "esmodules": [
     "main.js"
@@ -30,7 +30,7 @@
     }
   ],
   "minimumCoreVersion": "0.7.7",
-  "compatibleCoreVersion": "0.7.8",
+  "compatibleCoreVersion": "0.7.9",
   "url": "https://github.com/Haxxer/FoundryVTT-PotatoOrNot",
   "manifest": "https://raw.githubusercontent.com/Haxxer/FoundryVTT-PotatoOrNot/main/potato-or-not/module.json",
   "download": "https://github.com/Haxxer/FoundryVTT-PotatoOrNot/raw/main/potato-or-not.zip"

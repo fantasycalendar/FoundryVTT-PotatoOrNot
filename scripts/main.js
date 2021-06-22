@@ -136,7 +136,7 @@ class PotatoOrNotHandler{
 
 		if(!game.settings.get('potato-or-not', 'hasBeenPrompted') && game.settings.get('potato-or-not', 'promptUsers')){
 			this.showDialog();
-		}else if(numberOfSettings != game.settings.get("potato-or-not", "numberOfSettings")){
+		}else if(numberOfSettings !== game.settings.get("potato-or-not", "numberOfSettings")){
 			game.settings.set("potato-or-not", "numberOfSettings", numberOfSettings);
 			this.updateSettings();
 		}
@@ -176,16 +176,17 @@ class PotatoOrNotHandler{
 
 	/**
 	  * Sets the graphic quality of the client
-	  * @param {number} quality_level	The quality level which to apply
+	  * @param {number}     quality_level	The quality level which to apply
 	  * 
-	  * @return {bool} 					If the quality level was applied succeeded
+	  * @return {boolean} 					If the quality level was applied succeeded
 	  */
-	set quality(level){
-		if(typeof level !== 'number') throw "quality must be of type number";
-		if(!(level >= 0 && level <= 2)) throw "quality must be 0, 1, or 2";
+	set quality(quality_level){
 
-		this._quality = level;
-		game.settings.set("potato-or-not", "potatoLevel", level);
+		if(typeof quality_level !== 'number') throw "quality must be of type number";
+		if(!(quality_level >= 0 && quality_level <= 2)) throw "quality must be 0, 1, or 2";
+
+		this._quality = quality_level;
+		game.settings.set("potato-or-not", "potatoLevel", quality_level);
 
 		this.updateSettings();
 	}
@@ -195,10 +196,10 @@ class PotatoOrNotHandler{
 	  * @param {number} quality_level	The quality level which to get the setting from
 	  * @param {string} module			The module the setting belongs to
 	  * @param {string} setting			The setting to get the value from
-	  * 
+	  *
 	  * @return {any} 					The value of the setting
 	  */
-	getSetting(quality_level=1, module="", setting="", value=""){
+	getSetting(quality_level = 1, module = "", setting = ""){
 
 		this._validate_setting(quality_level, module, setting);
 
@@ -208,15 +209,15 @@ class PotatoOrNotHandler{
 
 	/**
 	  * Adds a setting to be applied on a quality level
-	  * @param {number} quality_level	The quality level which to apply the setting to
-	  * @param {string} module			The module the setting belongs to
-	  * @param {string} setting			The setting to modify 
-	  * @param {any} 	value			The value to set
-	  * @param {bool}	force			Whether to force-apply the setting right away should the client have the same quality level
+	  * @param {number}     quality_level	The quality level which to apply the setting to
+	  * @param {string}     module			The module the setting belongs to
+	  * @param {string}     setting			The setting to modify
+	  * @param {any} 	    value			The value to set
+	  * @param {boolean}	force			Whether to force-apply the setting right away should the client have the same quality level
 	  * 
-	  * @return {bool} 					If setting was applied succeeded
+	  * @return {boolean} 					If setting was applied succeeded
 	  */
-	addSetting(quality_level=1, module="", setting="", value="", force=false){
+	addSetting(quality_level = 1, module = "", setting = "", value = "", force = false){
 
 		this._validate_quality_level(quality_level);
 
@@ -226,7 +227,7 @@ class PotatoOrNotHandler{
 
 		this.settings[quality_level][module][setting] = value;
 
-		if(force && this.quality == quality_level){
+		if(force && this.quality === quality_level){
 			try{
 				game.settings.set(module, setting, value);
 				return true;
@@ -242,13 +243,13 @@ class PotatoOrNotHandler{
 
 	/**
 	  * Removes a setting from a quality level
-	  * @param {number} quality_level	The quality level which to apply the setting to
-	  * @param {string} module			The module the setting belongs to
-	  * @param {string} setting			The setting to modify
+	  * @param {number}     quality_level	The quality level which to apply the setting to
+	  * @param {string}     module			The module the setting belongs to
+	  * @param {string}     setting			The setting to modify
 	  * 
-	  * @return {bool} 					If setting was removed successfully
+	  * @return {boolean} 					If setting was removed successfully
 	  */
-	removeSetting(quality_level=1, module="", setting=""){
+	removeSetting(quality_level = 1, module = "", setting = ""){
 
 		this._validate_setting(quality_level, module, setting);
 
@@ -267,7 +268,7 @@ class PotatoOrNotHandler{
 
 class PotatoOrNotApplication extends FormApplication {
 	
-	constructor(dialogData={}, options={}) {
+	constructor(dialogData = {}, options = {}) {
 		super(dialogData, options);
 		game.settings.sheet.close();
 		this.potato_quality = PotatoOrNot.quality;

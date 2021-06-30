@@ -27,6 +27,11 @@
       "lang": "es",
       "name": "Español",
       "path": "languages/es.json"
+    },
+    {
+      "lang": "zh-TW",
+      "name": "正體中文",
+      "path": "languages/zh-TW.json"
     }
   ],
   "minimumCoreVersion": "0.7.7",

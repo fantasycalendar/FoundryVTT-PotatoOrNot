@@ -1,6 +1,6 @@
 # Potato Or Not
 
-*made with ![Sam saying Po-Ta-Toes](docs/small_potato.png) by Adam Oresten*
+*made with :potato: by Adam Oresten*
 
 ---
 

@@ -32,6 +32,11 @@
       "lang": "zh-TW",
       "name": "正體中文",
       "path": "languages/zh-TW.json"
+    },
+    {
+      "lang": "ja",
+      "name": "日本語",
+      "path": "languages/ja.json"
     }
   ],
   "minimumCoreVersion": "0.7.7",

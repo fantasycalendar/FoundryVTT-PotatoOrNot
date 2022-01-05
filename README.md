@@ -1,6 +1,6 @@
 # Potato Or Not
 
-*made with :potato: by Adam Oresten*
+*made with :potato: by Wasp#2005*
 
 ---
 

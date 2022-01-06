@@ -310,8 +310,7 @@ class PotatoOrNotApplication extends FormApplication {
 	_selectedPotatoLevel(event) {
 		event.preventDefault();
 		const btn = $(event.currentTarget);
-		const level = btn.attr("level")|0;
-		this.potato_quality = level;
+        this.potato_quality = Number(btn.attr("level"));
 		btn.attr('active', true);
 		this._element.find(".potato-level-container").not(btn).removeAttr("active");
 	}

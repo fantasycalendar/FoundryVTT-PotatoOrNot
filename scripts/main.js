@@ -283,7 +283,7 @@ class PotatoOrNotApplication extends FormApplication {
 			template: `modules/potato-or-not/templates/potato-template.html`,
 			classes: ["dialog"],
 			width: 900,
-			height: 425,
+			height: "auto",
 		});
 	}
 
@@ -303,6 +303,7 @@ class PotatoOrNotApplication extends FormApplication {
 		super.activateListeners(html);
 		let btn = html.find(".potato-level-container");
 		btn.click(this._selectedPotatoLevel.bind(this));
+		setTimeout(() => this.setPosition(), 50);
 	}
 
 	/* -------------------------------------------- */

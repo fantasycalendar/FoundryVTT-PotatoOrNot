@@ -13,7 +13,7 @@ Other works by us:
 - [Sequencer](https://foundryvtt.com/packages/sequencer) - Wow your players by playing visual effects on the canvas
 - [Item Piles](https://foundryvtt.com/packages/item-piles) - Drag & drop items into the scene to drop item piles that you can then easily pick up
 - [Tagger](https://foundryvtt.com/packages/tagger) - Tag objects in the scene and retrieve them with a powerful API
-- [Token Ease](https://foundryvtt.com/packages/token-ease) - No longer shall your tokens move across the canvas slowly and with lathargy
+- [Token Ease](https://foundryvtt.com/packages/token-ease) - Make your tokens _feel good_ to move around on the board
 
 Like what we've done? Buy us a coffee!
 

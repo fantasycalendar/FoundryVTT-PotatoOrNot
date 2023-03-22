@@ -47,6 +47,14 @@ Sets the graphic quality of the client and update settings associated with that 
 
 ---
 
+## Hooks
+
+### <code>PotatoOrNot</code>
+
+Called when the module has been instantiated - use this when calling the methods below
+
+---
+
 ## Functions
 
 ### <code>PotatoOrNot.showDialog</code>

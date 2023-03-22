@@ -53,7 +53,7 @@ CONSTANTS.BASE_SETTINGS = [
       "performanceMode": 0,
       "pixelRatioResolutionScaling": false,
       "photosensitiveMode": true,
-      "maxFPS": 20,
+      "maxFPS": 10,
       "mipmap": false,
       "visionAnimation": false,
       "lightAnimation": false,

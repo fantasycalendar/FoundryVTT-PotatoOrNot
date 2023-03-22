@@ -1,0 +1,59 @@
+
+
+.potato-master-container{
+    display:flex;
+    flex-direction: column;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding-bottom:0.5rem;
+    min-height: 300px;
+}
+
+.potato-level-container{
+    flex:0 1 30%;
+    display:inline-flex;
+    flex-direction: column;
+    opacity:0.3;
+    transition: opacity 0.3s;
+    -webkit-transition: opacity 0.3s;
+    cursor: pointer;
+}
+
+.potato-level-container[active]{
+    opacity: 1;
+}
+
+.potato-level-container:hover{
+    opacity: 1;
+}
+
+.potato-level-row{
+    flex:1;
+    align-self: flex-start;
+}
+
+.potato-level-row-text{
+    flex:0 1 auto;
+    align-self: flex-end;
+}
+
+.potato h1{
+    text-align:center;
+    padding-bottom:0.5rem;
+}
+
+.potato h2{
+    text-align:center;
+}
+
+.potato span{
+    font-size: 1rem;
+}
+
+.potato .potato_icon{
+    display: inline-block;
+    height: 1rem;
+    top: 3px;
+    position: relative;
+    border:0;
+}

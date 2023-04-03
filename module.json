@@ -2,7 +2,7 @@
   "id": "potato-or-not",
   "title": "Potato Or Not",
   "description": "Is your computer a potato or not? If so, this mod will prompt you that you might want to turn down your graphics.",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "minimumCoreVersion": "10",
   "compatibility": {
     "minimum": "10",
@@ -27,6 +27,11 @@
       "lang": "en",
       "name": "English",
       "path": "languages/en.json"
+    },
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "languages/fr.json"
     },
     {
       "lang": "fr-FR",

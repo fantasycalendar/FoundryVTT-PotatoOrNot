@@ -229,7 +229,7 @@ class PotatoOrNotApplication extends FormApplication {
 
   /** @override */
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       title: "Potato Or Not",
       template: `modules/potato-or-not/templates/potato-template.html`,
       classes: ["dialog"],

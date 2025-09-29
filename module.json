@@ -4,9 +4,9 @@
   "description": "Is your computer a potato or not? If so, this mod will prompt you that you might want to turn down your graphics.",
   "version": "0.5.1",
   "compatibility": {
-    "minimum": "10",
-    "verified": "12",
-    "maximum": "12"
+    "minimum": "13",
+    "verified": "13",
+    "maximum": "13"
   },
   "authors": [
     {

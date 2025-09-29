@@ -72,7 +72,7 @@ CONSTANTS.BASE_SETTINGS = [
   },
   {
     "core": {
-      "performanceMode": 2,
+      "performanceMode": 3,
       "maxFPS": 60,
       "pixelRatioResolutionScaling": true,
       "photosensitiveMode": false,

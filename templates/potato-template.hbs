@@ -1,9 +1,9 @@
-<form id="potato-form" class="dialog-content potato" onsubmit="event.preventDefault();">
-	
+<div class="potato potato-container">
+
 	<h1 id="potato-title">{{ localize "PotatoOrNot.Selection"}}</h1>
 
 	<div class='potato-master-container'>
-		<div class='potato-level-container' level='0' {{#if (eq potato_quality 0)}} active {{/if}} >
+		<div class='potato-level-container' level='0' {{#if (eq potato_quality 0)}} active="true" {{/if}} >
 			<div class="potato-level-row">
 				<img src='modules/potato-or-not/styles/img/bad_potato.jpg'>
 			</div>
@@ -12,7 +12,7 @@
 				<p>{{ localize "PotatoOrNot.BadDescription" }}</p>
 			</div>
 		</div>
-		<div class='potato-level-container' level='1' {{#if (eq potato_quality 1)}} active {{/if}} >
+		<div class='potato-level-container' level='1' {{#if (eq potato_quality 1)}} active="true" {{/if}} >
 			<div class="potato-level-row">
 				<img src='modules/potato-or-not/styles/img/potato.png'>
 			</div>
@@ -21,7 +21,7 @@
 				<p>{{ localize "PotatoOrNot.MediumDescription" }}</p>
 			</div>
 		</div>
-		<div class='potato-level-container' level='2' {{#if (eq potato_quality 2)}} active {{/if}} >
+		<div class='potato-level-container' level='2' {{#if (eq potato_quality 2)}} active="true" {{/if}} >
 			<div class="potato-level-row">
 				<img src='modules/potato-or-not/styles/img/good_potato.jpg'>
 			</div>
@@ -31,14 +31,12 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<hr>
 
-    <div class="dialog-buttons">
-        <button class="dialog-button" data-button="confirm">
-			<img class="potato_icon" src='modules/potato-or-not/styles/img/potato_icon.png'></img>
-			{{ localize "PotatoOrNot.Accept" }}
-        </button>
-    </div>
+	<button class="dialog-button" data-button="confirm">
+		<i class="fa-solid fa-potato"></i>
+		{{ localize "PotatoOrNot.Accept" }}
+	</button>
 
-</form>
+</div>

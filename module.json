@@ -62,7 +62,6 @@
   "manifest": "https://github.com/fantasycalendar/FoundryVTT-PotatoOrNot/releases/latest/download/manifest.json",
   "download": "https://github.com/fantasycalendar/FoundryVTT-PotatoOrNot/releases/latest/download/module.zip",
   "readme": "https://github.com/fantasycalendar/FoundryVTT-PotatoOrNot/blob/master/README.md",
-  "bugs": "https://github.com/fantasycalendar/FoundryVTT-PotatoOrNot/issues",
-  "allowBugReporter": true
+  "bugs": "https://github.com/fantasycalendar/FoundryVTT-PotatoOrNot/issues"
 }
 
